@@ -327,7 +327,7 @@ function esIntentoGanado($estructuraPalabraIntento)
 function obtenerPuntajeWordix($nroIntentos)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
     $puntajeFinal = 0;
-    
+
     switch ($nroIntentos) {
         case 1:
             $puntajeFinal=6;
@@ -409,6 +409,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 }
 
 /**
+ * MODULO 3
  * Muestra en pantalla el menu de opiones de WORDIX, previamente definido 
  */
 function seleccionarOpcion (){
@@ -424,4 +425,77 @@ function seleccionarOpcion (){
     ");
     $num=solicitarNumeroEntre(1,8);
     return $num;
+}
+
+/**
+ * MODULO 2
+ * Obtiene una colección de partidas
+ * @return array
+ */
+function cargarPartidas($numeroPartida)
+{
+    $datosPartida1 = [ "palabraWordix" => "QUESO",
+                        "jugador" => "majo",
+                        "intentos" => 0,
+                        "puntaje" => 0] ;
+
+    $datosPartida2 = [ "palabraWordix" => "CASAS",
+                        "jugador" => "rudolf",
+                        "intentos" => 3,
+                        "puntaje" => 14] ;
+
+    $datosPartida3 = [ "palabraWordix" => "QUESO",
+                        "jugador" => "pink200",
+                        "intentos" => 6,
+                        "puntaje" => 10] ;    
+                        
+    $datosPartida4 = [ "palabraWordix" => "MESSI",
+                        "jugador" => "majo",
+                        "intentos" => 2,
+                        "puntaje" => 15] ;
+
+    $datosPartida5 = [ "palabraWordix" => "QUESO",
+                        "jugador" => "nacho",
+                        "intentos" => 3,
+                        "puntaje" => 14] ;
+
+    $datosPartida6 = [ "palabraWordix" => "YERBA",
+                        "jugador" => "joaco",
+                        "intentos" => 6,
+                        "puntaje" => 10] ;
+
+    $datosPartida7 = [ "palabraWordix" => "AVION",
+                        "jugador" => "joaco",
+                        "intentos" => 2,
+                        "puntaje" => 15] ;
+
+    $datosPartida8 = [ "palabraWordix" => "MESSI",
+                        "jugador" => "majo",
+                        "intentos" => 3,
+                        "puntaje" => 12] ;
+
+    $datosPartida9 = [ "palabraWordix" => "GATOS",
+                        "jugador" => "juli",
+                        "intentos" => 1,
+                        "puntaje" => 17] ;
+
+    $datosPartida10 = [ "palabraWordix" => "GATOS",
+                        "jugador" => "franco",
+                        "intentos" => 6,
+                        "puntaje" => 10] ;
+
+
+    $coleccionPartidas = [];
+    $coleccionPartidas  [0] = $datosPartida1;
+    $coleccionPartidas  [1] = $datosPartida2;
+    $coleccionPartidas  [2] = $datosPartida3;
+    $coleccionPartidas  [3] = $datosPartida4;
+    $coleccionPartidas  [4] = $datosPartida5;
+    $coleccionPartidas  [5] = $datosPartida6;
+    $coleccionPartidas  [6] = $datosPartida7;
+    $coleccionPartidas  [7] = $datosPartida8;
+    $coleccionPartidas  [8] = $datosPartida9;
+    $coleccionPartidas  [9] = $datosPartida10;
+
+    return ($coleccionPartidas[$numeroPartida]);
 }
