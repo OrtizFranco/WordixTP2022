@@ -320,13 +320,42 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * Calcula el puntaje que se obtuvo en una partida de WORDIX
+ * @param int $nroIntentos
+ * @return int 
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($nroIntentos)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
+    $puntajeFinal = 0;
+    
+    switch ($nroIntentos) {
+        case 1:
+            $puntajeFinal=6;
+            break;
+        
+        case 2:
+            $puntajeFinal=5;
+            break;
 
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+        case 3:
+            $puntajeFinal=4;
+            break;
+
+        case 4:
+            $puntajeFinal=3;
+            break;
+
+        case 5:
+            $puntajeFinal=2;
+            break;
+
+        case 6:
+            $puntajeFinal=1;
+            break;
+        }
+    
+    
+    return $puntajeFinal;
 }
 
 /**
@@ -361,7 +390,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento
@@ -377,4 +406,22 @@ function jugarWordix($palabraWordix, $nombreUsuario)
     ];
 
     return $partida;
+}
+
+/**
+ * Muestra en pantalla el menu de opiones de WORDIX, previamente definido 
+ */
+function seleccionarOpcion (){
+    echo ("
+    1) Jugar al Wordix con una palabra elegida\n
+    2) Jugar al Wordix con una palabra aleatoria\n
+    3) Mostrar una partida\n
+    4) Mostrar la primer partida ganadora\n
+    5) Mostrar resumen de Jugador\n
+    6) Mostrar listado de partidas ordenadas por jugador y por palabra\n
+    7) Agregar una palabra de 5 letras a Wordix\n
+    8) Salir\n
+    ");
+    $num=solicitarNumeroEntre(1,8);
+    return $num;
 }
