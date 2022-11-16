@@ -504,3 +504,33 @@ function cargarPartidas()
 
     return ($coleccionPartidas);
 }
+
+
+
+/**
+ * MODULO 6
+ * Solicita un numero de partida para visualizarla
+ */
+function mostrarPartidas()
+{
+    $coleccionPartidasss = cargarPartidas();
+    echo("Ingrese un numero de partida para visualizarla: ");
+    $numeroPartida = solicitarNumeroEntre(0,count($coleccionPartidasss));
+    $palabraWordix = $coleccionPartidasss [$numeroPartida] ["palabraWordix"];
+    $nombreUsuarioWoridx = $coleccionPartidasss [$numeroPartida] ["jugador"];
+    $puntajeWordix = $coleccionPartidasss [$numeroPartida] ["puntaje"];
+    $intentosWordix= $coleccionPartidasss [$numeroPartida] ["intentos"];
+
+    if ($intentosWordix == 0){
+        $intentosWordix = "No adivino la palabra";
+    }
+
+    echo ("\nPartida WORDIX " . $numeroPartida .": palabra ". $palabraWordix . "\n" .
+           "Jugador: ". $nombreUsuarioWoridx . "\n" .
+            "Puntaje: ". $puntajeWordix . "\n". 
+            "Intento : " . $intentosWordix . "\n");
+
+    /*$partida = $coleccionPartidasss[$numeroPartida];
+    print_r($partida);*/
+    
+}

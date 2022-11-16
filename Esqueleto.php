@@ -85,8 +85,8 @@ do {
 
             break;
         case 3: 
-            echo("Ingrese un numero de partida para visualizarla: ");
-            $numeroPartida = trim(fgets(STDIN));
+            ##echo("Ingrese un numero de partida para visualizarla: ");
+            mostrarPartidas();
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
 
             break;
