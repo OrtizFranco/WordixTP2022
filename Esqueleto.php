@@ -66,8 +66,9 @@ do {
             echo ("Ingrese su nombre de usuario: ");
             $nombreUsuario = trim(fgets(STDIN));
             echo ("Ingrese un numero de palabra a jugar: ");
-            $numPalabraAJugar = trim(fgets((STDIN))); /* Validar que es un numero */
-            $partida = jugarWordix($coleccionPalabras[$numPalabraAJugar], strtolower($nombreUsuario));
+            ##$numPalabraAJugar = trim(fgets((STDIN))); 
+            $num12 = solicitarNumeroEntre(0,count($coleccionPalabras));
+            $partida = jugarWordix($coleccionPalabras[$num12], strtolower($nombreUsuario));
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
