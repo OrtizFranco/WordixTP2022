@@ -435,7 +435,7 @@ function seleccionarOpcion (){
  * Obtiene una colección de partidas
  * @return array
  */
-function cargarPartidas($numeroPartida,$partida)
+function cargarPartidas()
 {
     $datosPartida1 = [ "palabraWordix" => "QUESO",
                         "jugador" => "majo",
@@ -500,8 +500,7 @@ function cargarPartidas($numeroPartida,$partida)
     $coleccionPartidas  [8] = $datosPartida9;
     $coleccionPartidas  [9] = $datosPartida10;
     
-    /*$nuevoIndice = count($coleccionPartidas);
-    $coleccionPartidas [$nuevoIndice]=$partida;*/
+  
 
-    return ($coleccionPartidas[$numeroPartida]);
+    return ($coleccionPartidas);
 }

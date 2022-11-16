@@ -51,7 +51,7 @@ function cargarColeccionPalabras()
 //imprimirResultado($partida);
 
 $coleccionPalabras = cargarColeccionPalabras();
-##$coleccionPartidasJugadas = cargarPartidas();
+$coleccionPartidasJugadas = cargarPartidas();
 
 
 
@@ -66,17 +66,20 @@ do {
             echo ("Ingrese su nombre de usuario: ");
             $nombreUsuario = trim(fgets(STDIN));
             echo ("Ingrese un numero de palabra a jugar: ");
-            $numPalabraAJugar = trim(fgets((STDIN)));
-            ##$datosPartida  
+            $numPalabraAJugar = trim(fgets((STDIN))); /* Validar que es un numero */
             $partida = jugarWordix($coleccionPalabras[$numPalabraAJugar], strtolower($nombreUsuario));
+            $nuevoIndice = count($coleccionPartidasJugadas);
+            $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
 
             break;
         case 2: 
             echo ("Ingrese su nombre de usuario: ");
             $nombreUsuario = trim(fgets(STDIN));
-            $numeroAleatorio = rand(0,10); // como poner el maximo?
+            $numeroAleatorio = rand(0,count($coleccionPalabras)); 
             $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], strtolower($nombreUsuario));
+            $nuevoIndice = count($coleccionPartidasJugadas);
+            $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
 
             break;
