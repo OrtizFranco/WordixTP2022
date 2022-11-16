@@ -86,13 +86,16 @@ do {
             break;
         case 3: 
             echo("Ingrese un numero de partida para visualizarla: ");
-            $numeroPartida = trim(fgets(STDIN));
+            $numeroPartida = solicitarNumeroEntre(0,count($coleccionPartidasJugadas));
+            buscarPartida($numeroPartida-1);
+            break;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
 
             break;
         case 4:
             echo ("Ingrese un nombre de usuario para visualizar el primer juego ganado del mismo: ");
             $nombreUsuarioPrimerJuegoGanado= trim(fgets(STDIN));
+
 
             break;
         case 5:

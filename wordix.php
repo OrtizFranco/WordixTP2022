@@ -504,3 +504,29 @@ function cargarPartidas()
 
     return ($coleccionPartidas);
 }
+function buscarPartida($numeroPartida){
+    $coleccionPartidas = cargarPartidas();
+    print_r($coleccionPartidas[$numeroPartida]);
+}
+
+/**function primerPartidaGanada(){
+    $i=0;
+    $n=count($);
+    $bandera = true;
+    echo ("Ingrese el nombre del jugador: ");
+    $nombreJugador= trim(fgets((STDIN))); 
+    $coleccionPartidas = cargarPartidas($i);
+    while(($i<$n)&&($bandera)){
+        $coleccionPartidas =cargarPartidas($i);
+        if(($coleccionPartidas[$i]["jugador"]==$nombreJugador)&&($coleccionPartidas[$i]["puntaje"]>0)){
+            $bandera=false;
+        }
+    }
+    if($bandera){
+        echo "-1";
+    }else{
+        echo $i;
+    }
+    $i++;
+}
+*/
