@@ -102,6 +102,7 @@ do {
             break;
         case 7:
             leerPalabra5Letras();
+            // falta guardar la misma 
 
             break;
         

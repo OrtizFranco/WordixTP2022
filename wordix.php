@@ -125,7 +125,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Cuenta los caracteres que se encuentran en la palabra 
+ * @param string $cadena
+ * @return bool
  */
 function esPalabra($cadena)
 {
@@ -141,7 +143,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Detecta si la palabra ingresada es de 5 letras, en caso contrario te solicita una palabra de 5 letras
+ * @return String
  */
 function leerPalabra5Letras()
 {
@@ -432,7 +435,7 @@ function seleccionarOpcion (){
  * Obtiene una colección de partidas
  * @return array
  */
-function cargarPartidas($numeroPartida)
+function cargarPartidas($numeroPartida,$partida)
 {
     $datosPartida1 = [ "palabraWordix" => "QUESO",
                         "jugador" => "majo",
@@ -496,6 +499,9 @@ function cargarPartidas($numeroPartida)
     $coleccionPartidas  [7] = $datosPartida8;
     $coleccionPartidas  [8] = $datosPartida9;
     $coleccionPartidas  [9] = $datosPartida10;
+    
+    /*$nuevoIndice = count($coleccionPartidas);
+    $coleccionPartidas [$nuevoIndice]=$partida;*/
 
     return ($coleccionPartidas[$numeroPartida]);
 }
