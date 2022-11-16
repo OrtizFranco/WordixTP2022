@@ -51,6 +51,7 @@ function cargarColeccionPalabras()
 //imprimirResultado($partida);
 
 $coleccionPalabras = cargarColeccionPalabras();
+##$coleccionPartidasJugadas = cargarPartidas();
 
 
 
@@ -62,22 +63,45 @@ do {
     
     switch ($opcion) {
         case 1: 
-            echo ("ingrese su nombre");
+            echo ("Ingrese su nombre de usuario: ");
             $nombreUsuario = trim(fgets(STDIN));
             echo ("Ingrese un numero de palabra a jugar: ");
-            $numPalabraAJugar = trim(fgets((STDIN)));  
-        
+            $numPalabraAJugar = trim(fgets((STDIN)));
+            ##$datosPartida  
             $partida = jugarWordix($coleccionPalabras[$numPalabraAJugar], strtolower($nombreUsuario));
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
 
             break;
         case 2: 
-            
+            echo ("Ingrese su nombre de usuario: ");
+            $nombreUsuario = trim(fgets(STDIN));
+            $numeroAleatorio = rand(0,10); // como poner el maximo?
+            $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], strtolower($nombreUsuario));
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
 
             break;
         case 3: 
+            echo("Ingrese un numero de partida para visualizarla: ");
+            $numeroPartida = trim(fgets(STDIN));
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
+
+            break;
+        case 4:
+            echo ("Ingrese un nombre de usuario para visualizar el primer juego ganado del mismo: ");
+            $nombreUsuarioPrimerJuegoGanado= trim(fgets(STDIN));
+
+            break;
+        case 5:
+            echo ("Ingrese un nombre de usuario para visualizar sus estadisticas durante el juego: ");
+            $nombreUsuarioEstadisticas = trim(fgets(STDIN));
+
+            break;
+        case 6:
+
+
+            break;
+        case 7:
+            leerPalabra5Letras();
 
             break;
         
