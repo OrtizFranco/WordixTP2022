@@ -86,6 +86,7 @@ do {
                 }
                 $numeroPalabraAJugar = $nuevoNumero;
                 ##falta case 2
+                $i=-1;
                 }
                 $i++;
             }
@@ -132,6 +133,6 @@ do {
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
             break;
         
-            
+                
     }
 } while ($opcion != 8);

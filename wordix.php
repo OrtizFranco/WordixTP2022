@@ -458,72 +458,22 @@ function seleccionarOpcion (){
  */
 function cargarPartidas()
 {
-    $datosPartida1 = [ "palabraWordix" => "QUESO",
-                        "jugador" => "majo",
-                        "intentos" => 0,
-                        "puntaje" => 0] ;
-
-    $datosPartida2 = [ "palabraWordix" => "CASAS",
-                        "jugador" => "rudolf",
-                        "intentos" => 3,
-                        "puntaje" => 14] ;
-
-    $datosPartida3 = [ "palabraWordix" => "QUESO",
-                        "jugador" => "pink200",
-                        "intentos" => 6,
-                        "puntaje" => 10] ;    
-                        
-    $datosPartida4 = [ "palabraWordix" => "MESSI",
-                        "jugador" => "majo",
-                        "intentos" => 2,
-                        "puntaje" => 15] ;
-
-    $datosPartida5 = [ "palabraWordix" => "QUESO",
-                        "jugador" => "nacho",
-                        "intentos" => 3,
-                        "puntaje" => 14] ;
-
-    $datosPartida6 = [ "palabraWordix" => "YERBA",
-                        "jugador" => "joaco",
-                        "intentos" => 6,
-                        "puntaje" => 10] ;
-
-    $datosPartida7 = [ "palabraWordix" => "AVION",
-                        "jugador" => "joaco",
-                        "intentos" => 2,
-                        "puntaje" => 15] ;
-
-    $datosPartida8 = [ "palabraWordix" => "MESSI",
-                        "jugador" => "majo",
-                        "intentos" => 3,
-                        "puntaje" => 12] ;
-
-    $datosPartida9 = [ "palabraWordix" => "GATOS",
-                        "jugador" => "juli",
-                        "intentos" => 1,
-                        "puntaje" => 17] ;
-
-    $datosPartida10 = [ "palabraWordix" => "GATOS",
-                        "jugador" => "franco",
-                        "intentos" => 6,
-                        "puntaje" => 10] ;
-
-
-    $coleccionPartidas = [];
-    $coleccionPartidas  [0] = $datosPartida1;
-    $coleccionPartidas  [1] = $datosPartida2;
-    $coleccionPartidas  [2] = $datosPartida3;
-    $coleccionPartidas  [3] = $datosPartida4;
-    $coleccionPartidas  [4] = $datosPartida5;
-    $coleccionPartidas  [5] = $datosPartida6;
-    $coleccionPartidas  [6] = $datosPartida7;
-    $coleccionPartidas  [7] = $datosPartida8;
-    $coleccionPartidas  [8] = $datosPartida9;
-    $coleccionPartidas  [9] = $datosPartida10;
+    $coleccion = [];
+    $pa1 = ["palabraWordix" => "SUECO", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+    $pa2 = ["palabraWordix" => "YUYOS", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+    $pa3 = ["palabraWordix" => "HUEVO", "jugador" => "zrack", "intentos" => 3, "puntaje" => 9];
+    $pa4 = ["palabraWordix" => "TINTO", "jugador" => "cabrito", "intentos" => 4, "puntaje" => 8];
+    $pa5 = ["palabraWordix" => "RASGO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
+    $pa6 = ["palabraWordix" => "VERDE", "jugador" => "cabrito", "intentos" => 5, "puntaje" => 7];
+    $pa7 = ["palabraWordix" => "CASAS", "jugador" => "kleiton", "intentos" => 5, "puntaje" => 7];
+    $pa8 = ["palabraWordix" => "GOTAS", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0];
+    $pa9 = ["palabraWordix" => "ZORRO", "jugador" => "zrack", "intentos" => 4, "puntaje" => 8];
+    $pa10 = ["palabraWordix" => "GOTAS", "jugador" => "cabrito", "intentos" => 0, "puntaje" => 0];
+    $pa11 = ["palabraWordix" => "FUEGO", "jugador" => "cabrito", "intentos" => 2, "puntaje" => 10];
+    $pa12 = ["palabraWordix" => "TINTO", "jugador" => "briba", "intentos" => 0, "puntaje" => 0];
     
-  
-
-    return ($coleccionPartidas);
+    array_push($coleccion, $pa1, $pa2, $pa3, $pa4, $pa5, $pa6, $pa7, $pa8, $pa9, $pa10, $pa11, $pa12);
+    return $coleccion;
 }
 /**
  * Modulo 7
@@ -679,11 +629,11 @@ function mostrarColeccionPartidasOrdenada($coleccionPartidas){
     $n=count($coleccionPartidas);
     $arreglo = [];
    
-    for($i=0;$i<$n;$i++){
-       $arreglo[$i] = ["jugador" => $coleccionPartidas[$i]["jugador"],"palabra" => $coleccionPartidas[$i]["palabraWordix"]];
-    }
-    uasort($arreglo,'cmp');
-    print_r($arreglo);
+   // for($i=0;$i<$n;$i++){
+   //    $arreglo[$i] = ["jugador" => $coleccionPartidas[$i]["jugador"],"palabra" => $coleccionPartidas[$i]["palabraWordix"]];
+   // }
+    uasort($coleccionPartidas,'cmp2');
+    print_r($coleccionPartidas);
 }
 
 function cmp($a,$b){
@@ -695,4 +645,24 @@ function cmp($a,$b){
         $orden=1;
     }
     return $orden;
+}
+
+function cmp2($partida1, $partida2)
+{ 
+    if ($partida1["jugador"]== $partida2["jugador"])
+    {
+        if  ($partida1["palabraWordix"]== $partida2["palabraWordix"])
+           $orden=0;
+        elseif ($partida1["palabraWordix"]> $partida2["palabraWordix"])
+                        $orden=1;
+            else
+                $orden=-1;
+    }
+    elseif ($partida1["jugador"]> $partida2["jugador"])
+    $orden=1;
+    else
+    $orden=-1;
+
+    return $orden;
+
 }
