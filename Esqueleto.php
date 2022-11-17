@@ -85,7 +85,7 @@ do {
                     $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
                 }
                 $numeroPalabraAJugar = $nuevoNumero;
-                
+                ##falta case 2
                 }
                 $i++;
             }
