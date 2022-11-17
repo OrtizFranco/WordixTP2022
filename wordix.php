@@ -635,3 +635,28 @@ while ($esLetra){
 }
     strtolower ($nombreUsuario);
 return ($nombreUsuario);}
+
+function mostrarColeccionPartidasOrdenada($coleccionPartidas){
+    $n=count($coleccionPartidas);
+    $arregloPalabras = [];
+    $arregloJugadores = [];
+    for($i=0;$i<$n;$i++){
+       $arregloPalabras[$i] = ["palabra"=>$coleccionPartidas[$i]["palabraWordix"]];
+       $arregloJugadores[$i] = ["jugador"=>$coleccionPartidas[$i]["jugador"]];
+    }
+    uasort($arregloPalabras,'cmp');
+    uasort($arregloJugadores,'cmp');
+    print_r($arregloPalabras);
+    print_r($arregloJugadores);
+}
+
+function cmp($a,$b){
+    if($a==$b){
+        $orden=0;
+    }elseif($a<$b){
+        $orden=-1;
+    }else{
+        $orden=1;
+    }
+    return $orden;
+}

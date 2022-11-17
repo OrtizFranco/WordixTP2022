@@ -101,8 +101,10 @@ do {
             print_r($resumen);
             break;
         case 6:
-
-
+            //uasort($coleccionPartidasJugadas,'cmp');
+            $arregloOrdenado = [];
+            $arregloOrdenado = mostrarColeccionPartidasOrdenada($coleccionPartidasJugadas);
+            //print_r($coleccionPartidasJugadas);
             break;
         case 7:
             $palabra = leerPalabra5Letras();
