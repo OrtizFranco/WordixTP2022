@@ -594,3 +594,23 @@ function mostrarPartidas()
     print_r($partida);*/
     
 }
+
+/**
+ * MODULO 10
+ * Solicita un nombre de usuario, verifica que este comience con una letra y devuelve el nombre en minisculas
+ * @return string
+ */
+function solicitarJugador()
+{
+    /*  String $nombreUsuario / Bool $esLetra */
+    echo ("Ingrese su nombre de usuario: ");
+    $nombreUsuario = trim(fgets(STDIN));
+    $esLetra = !(ctype_alpha($nombreUsuario[0]));
+
+while ($esLetra){
+    echo "Su nombre de usuario debe comenzar con una letra, ingrese nuevamente su nombre de usuario: ";
+    $nombreUsuario = trim(fgets(STDIN));
+    $esLetra = !(ctype_alpha($nombreUsuario[0]));
+}
+    strtolower ($nombreUsuario);
+return ($nombreUsuario);}

@@ -63,22 +63,19 @@ do {
     
     switch ($opcion) {
         case 1: 
-            echo ("Ingrese su nombre de usuario: ");
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario = solicitarJugador();
             echo ("Ingrese un numero de palabra a jugar: ");
-            ##$numPalabraAJugar = trim(fgets((STDIN))); 
-            $num12 = solicitarNumeroEntre(0,count($coleccionPalabras)-1);
-            $partida = jugarWordix($coleccionPalabras[$num12], strtolower($nombreUsuario));
+            $numeroPalabraAJugar = solicitarNumeroEntre(0,count($coleccionPalabras));
+            $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
 
             break;
         case 2: 
-            echo ("Ingrese su nombre de usuario: ");
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario = solicitarJugador();
             $numeroAleatorio = rand(0,count($coleccionPalabras)); 
-            $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], strtolower($nombreUsuario));
+            $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
