@@ -504,10 +504,6 @@ function cargarPartidas()
 
     return ($coleccionPartidas);
 }
-function buscarPartida($numeroPartida){
-    $coleccionPartidas = cargarPartidas();
-    print_r($coleccionPartidas[$numeroPartida]);
-}
 
 function agregarPalabra($coleccionPalabras,$palabra){
     array_push($coleccionPalabras ,$palabra);
@@ -568,3 +564,33 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
         $resumenJugadores[0]= [ "jugador" => $nombreUsuario,"partidas" => $partidas,"puntaje" => $acumPuntaje,"victorias" => $partidasGanadas,"intento1" => $intento1,"intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,] ;
         return $resumenJugadores;
     }
+
+
+
+/**
+ * MODULO 6
+ * Solicita un numero de partida para visualizarla
+ */
+function mostrarPartidas()
+{
+    $coleccionPartidasss = cargarPartidas();
+    echo("Ingrese un numero de partida para visualizarla: ");
+    $numeroPartida = solicitarNumeroEntre(0,count($coleccionPartidasss));
+    $palabraWordix = $coleccionPartidasss [$numeroPartida] ["palabraWordix"];
+    $nombreUsuarioWoridx = $coleccionPartidasss [$numeroPartida] ["jugador"];
+    $puntajeWordix = $coleccionPartidasss [$numeroPartida] ["puntaje"];
+    $intentosWordix= $coleccionPartidasss [$numeroPartida] ["intentos"];
+
+    if ($intentosWordix == 0){
+        $intentosWordix = "No adivino la palabra";
+    }
+
+    echo ("\nPartida WORDIX " . $numeroPartida .": palabra ". $palabraWordix . "\n" .
+           "Jugador: ". $nombreUsuarioWoridx . "\n" .
+            "Puntaje: ". $puntajeWordix . "\n". 
+            "Intento : " . $intentosWordix . "\n");
+
+    /*$partida = $coleccionPartidasss[$numeroPartida];
+    print_r($partida);*/
+    
+}
