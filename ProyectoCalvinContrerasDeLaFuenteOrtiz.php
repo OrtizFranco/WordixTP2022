@@ -7,7 +7,7 @@ include_once("wordix.php");
 /* de la fuente Ignacio / FAI-4291 / TUDW / benjamindelafuente03@gmail.com / Chasli
 /* Calvin Basualto Joaquin / FAI-4227 / TUDW / joaquin_calvin02@hotmail.com / JoaquinCalvin
 /* Contreras Francisco Julian / FAI-1733 / TUDW / contrerasfjulian.1732@gmail.com / JulianContreras
-/* Datos del francou
+/* Ortiz Franco Ortiz / FAI-4389 - TUDW / franortiz696@gmail.com / Ortiz Franco
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 
 
