@@ -638,16 +638,13 @@ return ($nombreUsuario);}
 
 function mostrarColeccionPartidasOrdenada($coleccionPartidas){
     $n=count($coleccionPartidas);
-    $arregloPalabras = [];
-    $arregloJugadores = [];
+    $arregloOrdenado = [];
+   
     for($i=0;$i<$n;$i++){
-       $arregloPalabras[$i] = ["palabra"=>$coleccionPartidas[$i]["palabraWordix"]];
-       $arregloJugadores[$i] = ["jugador"=>$coleccionPartidas[$i]["jugador"]];
+       $arreglo[$i] = ["jugador" => $coleccionPartidas[$i]["jugador"],"palabra" => $coleccionPartidas[$i]["palabraWordix"]];
     }
-    uasort($arregloPalabras,'cmp');
-    uasort($arregloJugadores,'cmp');
-    print_r($arregloPalabras);
-    print_r($arregloJugadores);
+    uasort($arreglo,'cmp');
+    return $arreglo;
 }
 
 function cmp($a,$b){

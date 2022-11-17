@@ -15,6 +15,7 @@ include_once("wordix.php");
 /**************************************/
 
 /**
+ * Modulo 1
  * Obtiene una colección de palabras
  * @return array
  */
@@ -108,7 +109,7 @@ do {
             //uasort($coleccionPartidasJugadas,'cmp');
             $arregloOrdenado = [];
             $arregloOrdenado = mostrarColeccionPartidasOrdenada($coleccionPartidasJugadas);
-            //print_r($coleccionPartidasJugadas);
+            print_r($arregloOrdenado);
             break;
         case 7:
             $palabra = leerPalabra5Letras();
