@@ -327,7 +327,7 @@ function esIntentoGanado($estructuraPalabraIntento)
  * @param int $nroIntentos
  * @return int 
  */
-function obtenerPuntajeWordix($nroIntentos)  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($nroIntentos,$palabraWordix)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
     $puntajeFinal = 0;
 
@@ -356,11 +356,25 @@ function obtenerPuntajeWordix($nroIntentos)  /* ****COMPLETAR***** parámetros f
             $puntajeFinal=1;
             break;
         }
+        $cantCaracteres = strlen($palabraWordix);
+        $i = 0;
+        while ($i < $cantCaracteres) {
+            if ($palabraWordix[$i] == "a" || "e" || "i" || "o" || "u"){
+                $puntajeFinal=$puntajeFinal+1;
+            }else{
+                if ($palabraWordix[$i]<="m") {
+                    $puntajeFinal = $puntajeFinal+2;
+                }else{
+                    $puntajeFinal = $puntajeFinal+3;
+                }
+            }
+            $i++;
+        }
+
     
     
     return $puntajeFinal;
 }
-
 /**
  * Dada una palabra para adivinar, juega una partida de wordix intentando que el usuario adivine la palabra.
  * @param string $palabraWordix
