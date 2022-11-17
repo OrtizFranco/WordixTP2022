@@ -73,8 +73,8 @@ do {
             echo ("Ingrese un numero de palabra a jugar: ");
             $numeroPalabraAJugar = solicitarNumeroEntre(0,count($coleccionPalabras));
             $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
-            //$nuevoIndice = count($coleccionPartidasJugadas);
-            //$coleccionPartidasJugadas [$nuevoIndice] = $partida;
+            $nuevoIndice = count($coleccionPartidasJugadas);
+            $coleccionPartidasJugadas [$nuevoIndice] = $partida;
             
 
             break;
@@ -113,8 +113,6 @@ do {
         case 7:
             $palabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
-             
-
             break;
         
             
