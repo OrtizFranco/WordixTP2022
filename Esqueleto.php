@@ -39,9 +39,14 @@ function cargarColeccionPalabras()
 /**************************************/
 
 //Declaración de variables:
+// String $nombreUsuario, $nombreUsuarioPrimerJuegoGanado, $nombreUsuarioEstadisticas, $palabra, 
+// Array $partida, $resumen, $arregloOrdenado
+// Int $nuevoIndice,$numeroPalabraAJugar
 
 
 //Inicialización de variables:
+$coleccionPalabras = cargarColeccionPalabras();
+$coleccionPartidasJugadas = cargarPartidas();
 
 
 //Proceso:
@@ -50,8 +55,7 @@ function cargarColeccionPalabras()
 //print_r($partida);
 //imprimirResultado($partida);
 
-$coleccionPalabras = cargarColeccionPalabras();
-$coleccionPartidasJugadas = cargarPartidas();
+
 
 
 
@@ -69,7 +73,7 @@ do {
             $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            
 
             break;
         case 2: 
@@ -78,13 +82,13 @@ do {
             $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+            
 
             break;
         case 3: 
             ##echo("Ingrese un numero de partida para visualizarla: ");
             mostrarPartidas();
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
+            
 
             break;
         case 4:
@@ -109,10 +113,10 @@ do {
         case 7:
             $palabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
-            // falta guardar la misma 
+             
 
             break;
         
-            //...
+            
     }
 } while ($opcion != 8);
