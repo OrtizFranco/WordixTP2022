@@ -72,6 +72,23 @@ do {
             $nombreUsuario = solicitarJugador();
             echo ("Ingrese un numero de palabra a jugar: ");
             $numeroPalabraAJugar = solicitarNumeroEntre(0,count($coleccionPalabras));
+            $n = count($coleccionPartidasJugadas);
+            $i = 0;
+            
+            while ($i<$n){
+                
+                if (($coleccionPalabras[$numeroPalabraAJugar]==$coleccionPartidasJugadas[$i]["palabraWordix"]) && ($nombreUsuario==$coleccionPartidasJugadas[$i]["jugador"])){
+                echo "usted ya eligio ese numero de partida por favor ingrese otro: ";
+                $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
+                while ($nuevoNumero==$numeroPalabraAJugar){
+                    echo "usted ya eligio ese numero de partida por favor ingrese otro: ";
+                    $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
+                }
+                $numeroPalabraAJugar = $nuevoNumero;
+                
+                }
+                $i++;
+            }
             $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
