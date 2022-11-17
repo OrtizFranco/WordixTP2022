@@ -5,8 +5,10 @@ include_once("wordix.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 /* de la fuente Ignacio / FAI-4291 / TUDW / benjamindelafuente03@gmail.com / Chasli
+/* Calvin Basualto Joaquin / FAI-4227 / TUDW / joaquin_calvin02@hotmail.com / JoaquinCalvin
+/* Contreras Francisco Julian / FAI-1733 / TUDW / contrerasfjulian.1732@gmail.com / JulianContreras
+/* Datos del francou
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
-/* ... COMPLETAR ... */
 
 
 
@@ -31,7 +33,6 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
-/* ... COMPLETAR ... */
 
 
 
@@ -72,8 +73,8 @@ do {
             echo ("Ingrese un numero de palabra a jugar: ");
             $numeroPalabraAJugar = solicitarNumeroEntre(0,count($coleccionPalabras));
             $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
-            $nuevoIndice = count($coleccionPartidasJugadas);
-            $coleccionPartidasJugadas [$nuevoIndice] = $partida;
+            //$nuevoIndice = count($coleccionPartidasJugadas);
+            //$coleccionPartidasJugadas [$nuevoIndice] = $partida;
             
 
             break;
@@ -107,9 +108,7 @@ do {
             break;
         case 6:
             //uasort($coleccionPartidasJugadas,'cmp');
-            $arregloOrdenado = [];
-            $arregloOrdenado = mostrarColeccionPartidasOrdenada($coleccionPartidasJugadas);
-            print_r($arregloOrdenado);
+            mostrarColeccionPartidasOrdenada($coleccionPartidasJugadas);
             break;
         case 7:
             $palabra = leerPalabra5Letras();

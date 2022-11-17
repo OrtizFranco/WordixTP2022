@@ -27,7 +27,10 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ *  @param int $min;
+ *  @param int $max;
+ *  @return int;
+ * Solicita y verifica un numero entre un rango de valores determinado. 
  */
 function solicitarNumeroEntre($min, $max)
 {
@@ -325,9 +328,10 @@ function esIntentoGanado($estructuraPalabraIntento)
 /**
  * Calcula el puntaje que se obtuvo en una partida de WORDIX
  * @param int $nroIntentos
+ * @param int $palabraWordix
  * @return int 
  */
-function obtenerPuntajeWordix($nroIntentos,$palabraWordix)  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($nroIntentos,$palabraWordix)  
 {
     $puntajeFinal = 0;
 
@@ -427,7 +431,8 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
 /**
  * MODULO 3
- * Muestra en pantalla el menu de opiones de WORDIX, previamente definido 
+ * Muestra en pantalla el menu de opiones de WORDIX, previamente definido
+ * @return int;
  */
 function seleccionarOpcion (){
     echo ("
@@ -519,16 +524,25 @@ function cargarPartidas()
     return ($coleccionPartidas);
 }
 /**
- * 
+ * Modulo 7
+ * @param array $coleccionPalabras;
+ * @param string $palabra;
+ * @return array;
+ * Este modulo agrega una palabra a una lista de palabras;
  */
 function agregarPalabra($coleccionPalabras,$palabra){
     array_push($coleccionPalabras ,$palabra);
     return $coleccionPalabras;
 }
 /**
- * 
+ * Modulo 8
+ * @param array $coleccionPartidas;
+ * @param string $nombreUsuario;
+ * Muestra el indice de la primer partida que gano el usuario ingresado. Si no hay dicha partida, muestra -1
  */
 function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
+    //int $i,$n;
+    //bool $bandera;
     $i=0;
     $n=count($coleccionPartidas);
     $bandera = true; 
@@ -545,10 +559,14 @@ function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
     }
     
 }
-/**Modulo 9
- * Solicita coleccion de partidas y usuario para devolver resumen de ese usuario
- */
+/**
+ * Modulo 9
+ * @param array $coleccionPartidas;
+ * @param string $nombreUsuario;
+ * Solicita coleccion de partidas y nombre de usuario para devolver el resumen de partidas del mismo
+ **/
 function mostrarResumen($coleccionPartidas,$nombreUsuario){
+    //$int $partidas,$partidasGanadas,$acumPuntaje,$intento1,$intento2,$intento3,$intento4,$intento5,$intento6,$n,$i
     $partidas=0;
     $partidasGanadas= 0;
     $acumPuntaje=0;
@@ -581,9 +599,22 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
                 }
             }
         }
-    }   $resumenJugadores=[];
-        $resumenJugadores[0]= [ "jugador" => $nombreUsuario,"partidas" => $partidas,"puntaje" => $acumPuntaje,"victorias" => $partidasGanadas,"intento1" => $intento1,"intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,] ;
-        return $resumenJugadores;
+    }   echo ("\nJugador: ".$nombreUsuario."\n" .
+                "Partidas: ".$partidas."\n" .
+                "Puntaje Total: ".$acumPuntaje."\n". 
+                "Victorias : " .$partidasGanadas."\n".
+                "Porcentaje de victorias: ".round(($partidasGanadas*100)/$partidas)."%\n".
+                "Adivinadas: "."\n".
+                "   Intento 1:".$intento1."\n".
+                "   Intento 2:".$intento2."\n".
+                "   Intento 3:".$intento3."\n".
+                "   Intento 4:".$intento4."\n".
+                "   Intento 5:".$intento5."\n".
+                "   Intento 6:".$intento6."\n");
+    
+    //$resumenJugadores=[];
+        //$resumenJugadores[0]= [ "jugador" => $nombreUsuario,"partidas" => $partidas,"puntaje" => $acumPuntaje,"victorias" => $partidasGanadas,"intento1" => $intento1,"intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,] ;
+        //return $resumenJugadores;
     }
 
 
@@ -594,6 +625,9 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
  */
 function mostrarPartidas()
 {
+    //$coleccionPartidasss = array();
+    //int $numeroPartida,$puntajeWordix,$intentosWordix;
+    //String $palabraWordix,$nombreUsuarioWordix;
     $coleccionPartidasss = cargarPartidas();
     echo("Ingrese un numero de partida para visualizarla: ");
     $numeroPartida = solicitarNumeroEntre(0,count($coleccionPartidasss));
@@ -611,8 +645,6 @@ function mostrarPartidas()
             "Puntaje: ". $puntajeWordix . "\n". 
             "Intento : " . $intentosWordix . "\n");
 
-    /*$partida = $coleccionPartidasss[$numeroPartida];
-    print_r($partida);*/
     
 }
 
@@ -635,16 +667,21 @@ while ($esLetra){
 }
     strtolower ($nombreUsuario);
 return ($nombreUsuario);}
-
+/**
+ * Modulo 11
+ * @param array $coleccionPartidas;
+ * uasort es una funcion que nos permite ordenar un arreglo mediante otra funcion de comparacion definida por nostoros.
+ * Muestra muestra de forma ordenada,alfabeticamente, un arreglo de partidas
+ */
 function mostrarColeccionPartidasOrdenada($coleccionPartidas){
     $n=count($coleccionPartidas);
-    $arregloOrdenado = [];
+    $arreglo = [];
    
     for($i=0;$i<$n;$i++){
        $arreglo[$i] = ["jugador" => $coleccionPartidas[$i]["jugador"],"palabra" => $coleccionPartidas[$i]["palabraWordix"]];
     }
     uasort($arreglo,'cmp');
-    return $arreglo;
+    print_r($arreglo);
 }
 
 function cmp($a,$b){
