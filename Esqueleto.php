@@ -97,7 +97,7 @@ do {
         case 5:
             echo ("Ingrese un nombre de usuario para visualizar sus estadisticas durante el juego: ");
             $nombreUsuarioEstadisticas = trim(fgets(STDIN));
-            $resumen[]= mostrarResumen($coleccionPartidasJugadas,$nombreUsuarioEstadisticas);
+            $resumen= mostrarResumen($coleccionPartidasJugadas,$nombreUsuarioEstadisticas);
             print_r($resumen);
             break;
         case 6:

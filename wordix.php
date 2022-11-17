@@ -504,12 +504,16 @@ function cargarPartidas()
 
     return ($coleccionPartidas);
 }
-
+/**
+ * 
+ */
 function agregarPalabra($coleccionPalabras,$palabra){
     array_push($coleccionPalabras ,$palabra);
     return $coleccionPalabras;
 }
-
+/**
+ * 
+ */
 function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
     $i=0;
     $n=count($coleccionPartidas);
@@ -527,7 +531,9 @@ function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
     }
     
 }
-
+/**Modulo 9
+ * Solicita coleccion de partidas y usuario para devolver resumen de ese usuario
+ */
 function mostrarResumen($coleccionPartidas,$nombreUsuario){
     $partidas=0;
     $partidasGanadas= 0;
@@ -538,13 +544,14 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
     $intento4=0;
     $intento5=0;
     $intento6=0;
-    foreach($coleccionPartidas as $nombreUsuario){
-        if($coleccionPartidas["jugador"]==$nombreUsuario){
+    $n= count($coleccionPartidas);
+    for($i=0;$i<$n;$i++){
+        if($coleccionPartidas[$i]["jugador"]==$nombreUsuario){
             $partidas++;
-            $acumPuntaje= $acumPuntaje + $coleccionPartidas["puntaje"];
-            if($coleccionPartidas["puntaje"]>0){
+            $acumPuntaje= $acumPuntaje + $coleccionPartidas[$i]["puntaje"];
+            if($coleccionPartidas[$i]["puntaje"]>0){
                 $partidasGanadas++;
-                switch($coleccionPartidas["intentos"]){
+                switch($coleccionPartidas[$i]["intentos"]){
                     case 1: $intento1++;
                         break;
                     case 2: $intento2++;
