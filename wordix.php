@@ -509,24 +509,62 @@ function buscarPartida($numeroPartida){
     print_r($coleccionPartidas[$numeroPartida]);
 }
 
-/**function primerPartidaGanada(){
+function agregarPalabra($coleccionPalabras,$palabra){
+    array_push($coleccionPalabras ,$palabra);
+    return $coleccionPalabras;
+}
+
+function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
     $i=0;
-    $n=count($);
-    $bandera = true;
-    echo ("Ingrese el nombre del jugador: ");
-    $nombreJugador= trim(fgets((STDIN))); 
-    $coleccionPartidas = cargarPartidas($i);
+    $n=count($coleccionPartidas);
+    $bandera = true; 
     while(($i<$n)&&($bandera)){
-        $coleccionPartidas =cargarPartidas($i);
-        if(($coleccionPartidas[$i]["jugador"]==$nombreJugador)&&($coleccionPartidas[$i]["puntaje"]>0)){
+        if(($coleccionPartidas[$i]["jugador"]==$nombreUsuario)&&($coleccionPartidas[$i]["puntaje"]>0)){
             $bandera=false;
         }
+        $i++;
     }
     if($bandera){
         echo "-1";
     }else{
         echo $i;
     }
-    $i++;
+    
 }
-*/
+
+function mostrarResumen($coleccionPartidas,$nombreUsuario){
+    $partidas=0;
+    $partidasGanadas= 0;
+    $acumPuntaje=0;
+    $intento1=0;
+    $intento2=0;
+    $intento3=0;
+    $intento4=0;
+    $intento5=0;
+    $intento6=0;
+    foreach($coleccionPartidas as $nombreUsuario){
+        if($coleccionPartidas["jugador"]==$nombreUsuario){
+            $partidas++;
+            $acumPuntaje= $acumPuntaje + $coleccionPartidas["puntaje"];
+            if($coleccionPartidas["puntaje"]>0){
+                $partidasGanadas++;
+                switch($coleccionPartidas["intentos"]){
+                    case 1: $intento1++;
+                        break;
+                    case 2: $intento2++;
+                        break;
+                    case 3: $intento3++;
+                        break;
+                    case 4: $intento4++;
+                        break;
+                    case 5: $intento5++;
+                        break;
+                    case 6: $intento6++;
+                        break;
+                }
+            }
+        }
+    }   $resumenJugadores=[];
+        $resumenJugadores[0]= [ "jugador" => $nombreUsuario,"partidas" => $partidas,"puntaje" => $acumPuntaje,"victorias" => $partidasGanadas,"intento1" => $intento1,"intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,] ;
+        return $resumenJugadores;
+    }

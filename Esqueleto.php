@@ -67,7 +67,7 @@ do {
             $nombreUsuario = trim(fgets(STDIN));
             echo ("Ingrese un numero de palabra a jugar: ");
             ##$numPalabraAJugar = trim(fgets((STDIN))); 
-            $num12 = solicitarNumeroEntre(0,count($coleccionPalabras));
+            $num12 = solicitarNumeroEntre(0,count($coleccionPalabras)-1);
             $partida = jugarWordix($coleccionPalabras[$num12], strtolower($nombreUsuario));
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
@@ -95,20 +95,24 @@ do {
         case 4:
             echo ("Ingrese un nombre de usuario para visualizar el primer juego ganado del mismo: ");
             $nombreUsuarioPrimerJuegoGanado= trim(fgets(STDIN));
+            primerPartidaGanada($coleccionPartidasJugadas,$nombreUsuarioPrimerJuegoGanado);
+
 
 
             break;
         case 5:
             echo ("Ingrese un nombre de usuario para visualizar sus estadisticas durante el juego: ");
             $nombreUsuarioEstadisticas = trim(fgets(STDIN));
-
+            $resumen[]= mostrarResumen($coleccionPartidasJugadas,$nombreUsuarioEstadisticas);
+            print_r($resumen);
             break;
         case 6:
 
 
             break;
         case 7:
-            leerPalabra5Letras();
+            $palabra = leerPalabra5Letras();
+            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
             // falta guardar la misma 
 
             break;
