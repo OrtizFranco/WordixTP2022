@@ -115,7 +115,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * @param string $usuario 
+ * Muestra un mensaje de bienvenida al usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -128,7 +129,8 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * Cuenta los caracteres que se encuentran en la palabra 
+ * Cuenta los caracteres que se encuentran en la palabra y verifica que sea una palabra que no tenga caracteres
+ * especiales
  * @param string $cadena
  * @return bool
  */
