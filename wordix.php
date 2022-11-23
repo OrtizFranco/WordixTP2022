@@ -482,8 +482,17 @@ function cargarPartidas()
  * @return array;
  * Este modulo agrega una palabra a una lista de palabras;
  */
-function agregarPalabra($coleccionPalabras,$palabra){
-    array_push($coleccionPalabras ,$palabra);
+function agregarPalabra($coleccionPalabras,$nuevaPalabra){
+    $n=count($coleccionPalabras);
+    for($i=0;$i<$n;$i++){
+        if($coleccionPalabras[$i] == $nuevaPalabra){
+            echo "La palabra ya existe, porfavor ingrese otra. \n";
+            $nuevaPalabra = leerPalabra5Letras();
+            $i=-1;
+        }
+    }
+    array_push($coleccionPalabras ,$nuevaPalabra);
+    echo "Palabra cargada con exito!";
     return $coleccionPalabras;
 }
 /**
@@ -501,15 +510,15 @@ function primerPartidaGanada($coleccionPartidas,$nombreUsuario){
     while(($i<$n)&&($bandera)){
         if(($coleccionPartidas[$i]["jugador"]==$nombreUsuario)&&($coleccionPartidas[$i]["puntaje"]>0)){
             $bandera=false;
+            print_r($coleccionPartidas[$i]);
+            $mensaje = "Datos de la primer partida ganada de ".$nombreUsuario;
+        }elseif(($coleccionPartidas[$i]["jugador"]==$nombreUsuario)&&($coleccionPartidas[$i]["puntaje"]==0)){
+            $mensaje = "Este jugador no gano ninguna partida aun";
+        }elseif(($coleccionPartidas[$i]["jugador"]!=$nombreUsuario)){
+            $mensaje = "Jugador Inexistente";
         }
         $i++;
-    }
-    if($bandera){
-        echo "-1";
-    }else{
-        echo $i;
-    }
-    
+    }echo $mensaje;
 }
 /**
  * Modulo 9
@@ -550,8 +559,11 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
                         break;
                 }
             }
-        }
-    }   echo ("\nJugador: ".$nombreUsuario."\n" .
+    }}
+    if($partidas == 0){
+        echo "Este jugador no jugo ninguna partida";
+    }else{
+    echo ("\nJugador: ".$nombreUsuario."\n" .
                 "Partidas: ".$partidas."\n" .
                 "Puntaje Total: ".$acumPuntaje."\n". 
                 "Victorias : " .$partidasGanadas."\n".
@@ -568,6 +580,8 @@ function mostrarResumen($coleccionPartidas,$nombreUsuario){
         //$resumenJugadores[0]= [ "jugador" => $nombreUsuario,"partidas" => $partidas,"puntaje" => $acumPuntaje,"victorias" => $partidasGanadas,"intento1" => $intento1,"intento2" => $intento2,"intento3" => $intento3,"intento4" => $intento4,"intento5" => $intento5,"intento6" => $intento6,] ;
         //return $resumenJugadores;
     }
+}
+
 
 
 
@@ -665,4 +679,40 @@ function cmp2($partida1, $partida2)
 
     return $orden;
 
+}
+function verificarNumPalabra($coleccionPalabras,$coleccionPartidasJugadas,$numeroPalabra,$usuario){
+    $n = count($coleccionPartidasJugadas);
+    $i = 0;
+    while ($i<$n){
+        
+        if (($coleccionPalabras[$numeroPalabra]==$coleccionPartidasJugadas[$i]["palabraWordix"]) && ($usuario==$coleccionPartidasJugadas[$i]["jugador"])){
+        echo "usted ya eligio ese numero de palabra por favor ingrese otro: ";
+        $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
+        while ($nuevoNumero==$numeroPalabra){
+            echo "usted ya eligio ese numero de partida por favor ingrese otro: ";
+            $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
+        }
+        $numeroPalabra = $nuevoNumero;
+        $i=-1;
+        }
+        $i++;
+    }
+    return $numeroPalabra;
+}
+function verificarNumPalabraRandom($coleccionPalabras,$coleccionPartidasJugadas,$numeroPalabra,$usuario){
+    $n = count($coleccionPartidasJugadas);
+    $i = 0;
+    $cont = 0;
+    while ($i<$n){
+        if (($coleccionPalabras[$numeroPalabra]==$coleccionPartidasJugadas[$i]["palabraWordix"]) && ($usuario==$coleccionPartidasJugadas[$i]["jugador"])){
+        $nuevoNumero = rand(0,count($coleccionPalabras)); 
+        while ($nuevoNumero==$numeroPalabra){
+            $nuevoNumero = rand(0,count($coleccionPalabras)); 
+        }
+        $numeroPalabra = $nuevoNumero;
+        $i=-1;
+        }
+        $i++;
+    }
+    return $numeroPalabra;
 }

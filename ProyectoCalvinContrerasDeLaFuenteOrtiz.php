@@ -27,7 +27,7 @@ function cargarColeccionPalabras()
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
-        "YERBA", "MESSI", "DULCE", "NARIZ", "AVION"
+        "YERBA", "MESSI", "DULCE", "NARIZ", "AVION",
     ];
 
     return ($coleccionPalabras);
@@ -72,24 +72,7 @@ do {
             $nombreUsuario = solicitarJugador();
             echo ("Ingrese un numero de palabra a jugar: ");
             $numeroPalabraAJugar = solicitarNumeroEntre(0,count($coleccionPalabras));
-            $n = count($coleccionPartidasJugadas);
-            $i = 0;
-            
-            while ($i<$n){
-                
-                if (($coleccionPalabras[$numeroPalabraAJugar]==$coleccionPartidasJugadas[$i]["palabraWordix"]) && ($nombreUsuario==$coleccionPartidasJugadas[$i]["jugador"])){
-                echo "usted ya eligio ese numero de partida por favor ingrese otro: ";
-                $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
-                while ($nuevoNumero==$numeroPalabraAJugar){
-                    echo "usted ya eligio ese numero de partida por favor ingrese otro: ";
-                    $nuevoNumero = solicitarNumeroEntre(0,count($coleccionPalabras));
-                }
-                $numeroPalabraAJugar = $nuevoNumero;
-                ##falta case 2
-                $i=-1;
-                }
-                $i++;
-            }
+            $numeroPalabraAJugar = verificarNumPalabra($coleccionPalabras,$coleccionPartidasJugadas,$numeroPalabraAJugar,$nombreUsuario);
             $partida = jugarWordix($coleccionPalabras[$numeroPalabraAJugar], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
@@ -99,11 +82,10 @@ do {
         case 2: 
             $nombreUsuario = solicitarJugador();
             $numeroAleatorio = rand(0,count($coleccionPalabras)); 
+            $numeroAleatorio = verificarNumPalabraRandom($coleccionPalabras,$coleccionPartidasJugadas,$numeroAleatorio,$nombreUsuario);
             $partida = jugarWordix($coleccionPalabras[$numeroAleatorio], $nombreUsuario);
             $nuevoIndice = count($coleccionPartidasJugadas);
             $coleccionPartidasJugadas [$nuevoIndice] = $partida;
-            
-
             break;
         case 3: 
             ##echo("Ingrese un numero de partida para visualizarla: ");
@@ -131,8 +113,6 @@ do {
         case 7:
             $palabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
-            break;
-        
-                
+            break;    
     }
 } while ($opcion != 8);
